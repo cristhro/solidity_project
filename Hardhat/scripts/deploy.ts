@@ -6,7 +6,6 @@ async function _deployContract(contractName: string, ...args: Array<any>) {
   const contract = await Contract.deploy(...args);
   await contract.deployed();
   console.log(`Contract ${contractName} (${args}) deployed to:`, contract.address);
-
   return contract;
 }
 

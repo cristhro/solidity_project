@@ -7,4 +7,4 @@ test
 .DS_Store
 .gitattributes
 package-lock.json
-Hardhat/.env
+Hardhat/.env.local
