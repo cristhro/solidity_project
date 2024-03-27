@@ -43,8 +43,8 @@ contract LegalETH is ERC20 {
   }
 
   // Función personalizada para que la manager cree y envíe tokens a los clientes
-  function mintTokens(address client, uint256 amount) public onlyManager {
-    _safeMint(client, amount);
+  function mintTokens(address client, uint256 amount) public  onlyManager {
+    _mint(client, amount);
   }
 
   // Modifier para restringir la función a la manager

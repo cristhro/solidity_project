@@ -4,12 +4,7 @@
   "author": "Cristhian Rodriguez y Jesus Rosas",
   "scripts": {
     "clean": "hardhat clean",
-    "compile": "hardhat compile",
-    "school-token:deploy": "hardhat run scripts/schoolToken/deploy.ts --network ethereum_sepolia_testnet_as_school  ",
-    "school-token:verify": "hardhat verify  --network ethereum_sepolia_testnet_as_school  ",
-    "school-token:test1": "hardhat run scripts/schoolToken/test1_school_add_tokens_to_student.ts  --network ethereum_sepolia_testnet_as_school  ",
-    "school-token:test2": "hardhat run scripts/schoolToken/test2_student_my_balance.ts  --network ethereum_sepolia_testnet_as_student  ",
-    "school-token:test3": "hardhat run scripts/schoolToken/test3_director_my_balance.ts  --network ethereum_sepolia_testnet_as_director  "
+    "compile": "hardhat compile"
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.8",

@@ -29,9 +29,9 @@ Nuestro objetivo es hacer que los servicios legales sean más accesibles y trans
 ## Configuración del entorno
 #### .env:
 ```sh
-SIGNER_DIRECTOR_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
-SIGNER_STUDENT_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
-SIGNER_SCHOOL_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
+SIGNER_MANAGER_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
+SIGNER_LAWYER_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
+SIGNER_CLIENT_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
 
 SCHOOL_CERTIFICATE_CONTRACT_ADDRESS = 0x50cB8A98c6a468adCF4A7e6CCe28e8DebA34D3F3 ('TOBE CONFIGURED AFTER run script school-certificate:deploy')
 STUDENT_ADDRESS = 0x9128EC9e3B228771F291b1309a1Ca42098F94dA0
