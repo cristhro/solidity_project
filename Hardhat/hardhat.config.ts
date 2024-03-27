@@ -18,9 +18,9 @@ const chainIds = {
 };
 
 const { //This variables must be in the .env file, in order to work (like .env.example)
-  SIGNER_DIRECTOR_PRIVATE_KEY,
-  SIGNER_STUDENT_PRIVATE_KEY,
-  SIGNER_SCHOOL_PRIVATE_KEY,
+  SIGNER_MANAGER_PRIVATE_KEY,
+  SIGNER_LAWYER_PRIVATE_KEY,
+  SIGNER_CLIENT_PRIVATE_KEY,
   ETH_SEPOLIA_TESTNET_RPC,
   ETH_SCAN_API_KEY,
 } = process.env;
@@ -40,20 +40,20 @@ const config: HardhatUserConfig = {
     }
   },
   networks: {
-    ethereum_sepolia_testnet_as_student: {
+    ethereum_sepolia_testnet_as_lawyer: {
       url: ETH_SEPOLIA_TESTNET_RPC,
       chainId: chainIds.eth_sepolia_id,
-      accounts: SIGNER_STUDENT_PRIVATE_KEY !== undefined ? [SIGNER_STUDENT_PRIVATE_KEY] : []
+      accounts: SIGNER_LAWYER_PRIVATE_KEY !== undefined ? [SIGNER_LAWYER_PRIVATE_KEY] : []
     },
-    ethereum_sepolia_testnet_as_director: {
+    ethereum_sepolia_testnet_as_manager: {
       url: ETH_SEPOLIA_TESTNET_RPC,
       chainId: chainIds.eth_sepolia_id,
-      accounts: SIGNER_DIRECTOR_PRIVATE_KEY !== undefined ? [SIGNER_DIRECTOR_PRIVATE_KEY] : []
+      accounts: SIGNER_MANAGER_PRIVATE_KEY !== undefined ? [SIGNER_MANAGER_PRIVATE_KEY] : []
     },
-    ethereum_sepolia_testnet_as_school: {
+    ethereum_sepolia_testnet_as_client: {
       url: ETH_SEPOLIA_TESTNET_RPC,
       chainId: chainIds.eth_sepolia_id,
-      accounts: SIGNER_SCHOOL_PRIVATE_KEY !== undefined ? [SIGNER_SCHOOL_PRIVATE_KEY] : []
+      accounts: SIGNER_CLIENT_PRIVATE_KEY !== undefined ? [SIGNER_CLIENT_PRIVATE_KEY] : []
     },
   },
   etherscan: {
