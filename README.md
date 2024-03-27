@@ -13,6 +13,7 @@ En nuestro sistema, utilizamos tres tipos de tokens: LegalETH, LegalCase y Legal
 - LegalETH (ERC-20): Este token actúa como la moneda dentro de nuestro sistema. Los clientes pueden comprar estos tokens y usarlos para pagar los servicios legales.
 - LegalCase (ERC-721): Este token representa un caso legal único. Cada vez que un abogado abre un nuevo caso para un cliente, se acuña un nuevo token LegalCase. Este token se transfiere al cliente, representando la propiedad del caso.
 - LegalPackages (ERC-1155): Este token representa diferentes paquetes de servicios legales. Los clientes pueden comprar estos tokens con LegalETH según las necesidades de su caso.
+
 Nuestro objetivo es hacer que los servicios legales sean más accesibles y transparentes a través de la tecnología blockchain. Ya sea que seas un abogado buscando una forma eficiente de manejar tus casos, o un cliente buscando una forma transparente y fácil de acceder a los servicios legales, nuestro sistema está diseñado para ti. ¡Esperamos que encuentres nuestro sistema útil y fácil de usar!
 
 
