@@ -6,20 +6,14 @@ Proyecto Final - Programación de tokens no fungibles (estándares ERC-720 y ERC
 - Jesus Rosas Rosales
 
 ## Introducción
-En este sprint, usaremos dos nuevos contratos, SchoolCertificateNFT  (que implementa ERC-721) para la gestion de tokens unicos, 
-y SchoolEventTickets  (que implementa ERC-1155) para la gestión de tickets en los eventos academicos (excursiones).
+En este proyecto crearemos un sistema de servicios legales basado en blockchain. Este sistema utiliza la tecnología de contratos inteligentes para facilitar y mejorar la interacción entre abogados y clientes.
 
-### SchoolCertificateNFT
-- La escuela podra minar los certificado ntf (mintCertificate)
-- La escuela podra quemar los certificado ntf (burn)
-- La escuela podra invalidar un certificado ntf (isRevoked)
+En nuestro sistema, utilizamos tres tipos de tokens: LegalETH, LegalCase y LegalPackages. Cada uno de estos tokens tiene un propósito específico:
 
-### SchoolEventTickets
-- Este contrato permite a la escuela emitir y transferir tickets (A los estudiantes de la escuela).
-- Generación de entradas (mint): Solo el propietario del contrato puede generar nuevas entradas, garantizando un control centralizado.
-- Establecimiento de URIs (setURI): Permite asociar un identificador de recurso uniforme (URI) a cada entrada, proporcionando un enlace a información adicional como una imagen o descripción del evento.
-- Distribución de entradas (distributeTickets): El propietario puede distribuir entradas a múltiples destinatarios de forma eficiente.
-- Transferencia de entradas (transferTicket): Los poseedores de entradas pueden transferirlas a otros usuarios de forma segura, permitiendo la compraventa o intercambio de entradas.
+- LegalETH (ERC-20): Este token actúa como la moneda dentro de nuestro sistema. Los clientes pueden comprar estos tokens y usarlos para pagar los servicios legales.
+- LegalCase (ERC-721): Este token representa un caso legal único. Cada vez que un abogado abre un nuevo caso para un cliente, se acuña un nuevo token LegalCase. Este token se transfiere al cliente, representando la propiedad del caso.
+- LegalPackages (ERC-1155): Este token representa diferentes paquetes de servicios legales. Los clientes pueden comprar estos tokens con LegalETH según las necesidades de su caso.
+Nuestro objetivo es hacer que los servicios legales sean más accesibles y transparentes a través de la tecnología blockchain. Ya sea que seas un abogado buscando una forma eficiente de manejar tus casos, o un cliente buscando una forma transparente y fácil de acceder a los servicios legales, nuestro sistema está diseñado para ti. ¡Esperamos que encuentres nuestro sistema útil y fácil de usar!
 
 
 ## Configuración del entorno
