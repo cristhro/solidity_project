@@ -33,9 +33,10 @@ SIGNER_MANAGER_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
 SIGNER_LAWYER_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
 SIGNER_CLIENT_PRIVATE_KEY = TODO: Añadir aqui la clave privada de la cuenta
 
-SCHOOL_CERTIFICATE_CONTRACT_ADDRESS = 0x50cB8A98c6a468adCF4A7e6CCe28e8DebA34D3F3 ('TOBE CONFIGURED AFTER run script school-certificate:deploy')
-STUDENT_ADDRESS = 0x9128EC9e3B228771F291b1309a1Ca42098F94dA0
-DIRECTOR_ADDRESS = 0x925687E5C08B9653E57672386fe74c5902016042
+SCHOOL_LEGAL_ETH_ADDRESS = 0x23233E30142d3389C0DcA7678029309ada9fe380
+SCHOOL_LEGAL_CASE_ADDRESS = 0x329d59eB817d817d6C72e138adBaB21C78CF8b1a
+SCHOOL_LEGAL_PACKAGES_ADDRESS = 0x083c4C39e0Fd16C02D8DCbdC9Fd8b923473Ad5b6
+SCHOOL_LEGAL_MANAGER_ADDRESS = 0x464b5345485Dda5D96ca516694d1dBC66d456837
 
 ETH_SEPOLIA_TESTNET_RPC = https://ethereum-sepolia.blockpi.network/v1/rpc/public
 ETH_SCAN_API_KEY = ''
@@ -44,55 +45,43 @@ ETH_SEPOLIA_SCAN_WEB = https://sepolia.etherscan.io/
 
 #### packages.json:
 Pre configuración antes ejecutar los test,  el order para ejecutar es importante (Ya que SchoolCertificate depende de SchoolGrades ): 
-1. Primero hacer deploy de school-token:deploy 
+1. Primero hacer deploy de los contratos deploy 
 Resultado: dirección del contrato School token
 ```sh
   npm run school-token:deploy
-  ->  0x5Ae5CdF4b34a063351dDFe5A96ce05FaA652CB97
+   Contract LegalETH () deployed to: 0x23233E30142d3389C0DcA7678029309ada9fe380
+   Contract LegalCase () deployed to: 0x329d59eB817d817d6C72e138adBaB21C78CF8b1a
+   Contract LegalPackages (0x23233E30142d3389C0DcA7678029309ada9fe380) deployed to: 0x083c4C39e0Fd16C02D8DCbdC9Fd8b923473Ad5b6
+   Contract LegalManager (0x23233E30142d3389C0DcA7678029309ada9fe380,0x329d59eB817d817d6C72e138adBaB21C78CF8b1a) deployed to: 0x464b5345485Dda5D96ca516694d1dBC66d456837
 ```
 
-2. Verificar el contrato School Token
+2. Verificamos LegalETH
 ```sh
-  npm run school-token:verify  0x5Ae5CdF4b34a063351dDFe5A96ce05FaA652CB97
-  -> Successfully verified contract SchoolToken on Etherscan.
-  https://sepolia.etherscan.io/address/0x5Ae5CdF4b34a063351dDFe5A96ce05FaA652CB97#code
+  npm run verify  0x23233E30142d3389C0DcA7678029309ada9fe380
+  https://sepolia.etherscan.io/address/0x23233E30142d3389C0DcA7678029309ada9fe380#code
 ```
+3. Verificamos LegalCase
+```sh
+  npm run verify  0x329d59eB817d817d6C72e138adBaB21C78CF8b1a
+  https://sepolia.etherscan.io/address/0x329d59eB817d817d6C72e138adBaB21C78CF8b1a#code
+```
+4. Verificamos LegalPackages
+```sh
+  npm run verify  0x083c4C39e0Fd16C02D8DCbdC9Fd8b923473Ad5b6
+  https://sepolia.etherscan.io/address/0x083c4C39e0Fd16C02D8DCbdC9Fd8b923473Ad5b6#code
+```
+5. Verificamos LegalManager
+```sh
+  npm run verify  0x464b5345485Dda5D96ca516694d1dBC66d456837
+  https://sepolia.etherscan.io/address/0x464b5345485Dda5D96ca516694d1dBC66d456837#code
+```
+6. Configuramos las variables de entorno en .env
+```sh
+SCHOOL_LEGAL_ETH_ADDRESS = 0x23233E30142d3389C0DcA7678029309ada9fe380
+SCHOOL_LEGAL_CASE_ADDRESS = 0x329d59eB817d817d6C72e138adBaB21C78CF8b1a
+SCHOOL_LEGAL_PACKAGES_ADDRESS = 0x083c4C39e0Fd16C02D8DCbdC9Fd8b923473Ad5b6
+SCHOOL_LEGAL_MANAGER_ADDRESS = 0x464b5345485Dda5D96ca516694d1dBC66d456837
 
-3. Configurar la variable de entorno en .env
-```sh
-  SCHOOL_TOKEN_CONTRACT_ADDRESS=0x5Ae5CdF4b34a063351dDFe5A96ce05FaA652CB97
-```
-4. Hacer deploy de school-certificate-nft:deploy 
-```sh
-   npm run school-certificate-nft:deploy
-  -> 0x2F8678C270347372eE8744344cb66FE4A5e1E119
-```
-5. Verificar el contrato School Certificate NFT
-```sh
-   npm run school-certificate-nft:verify 0x2F8678C270347372eE8744344cb66FE4A5e1E119
-```
-- Resultado: 
-    - https://sepolia.etherscan.io/address/0x2F8678C270347372eE8744344cb66FE4A5e1E119#code
-    
-7. Configurar la variable de entorno en .env
-```sh
-  SCHOOL_CERTIFICATE_CONTRACT_ADDRESS=0xf9d0cac27C306Dd9207A3d15eA68b2F838f0C6ff
-```
-8. Hacer deploy de school-event-tickets:deploy 
-```sh
-   npm run school-event-tickets:deploy
-  -> 0xdA9004C3c064BA0Eb211aFFc2ea45516cBa2F4cF
-```
-9. Verificar el contrato School Event Tickets
-```sh
-   npm run school-event-tickets:verify 0xdA9004C3c064BA0Eb211aFFc2ea45516cBa2F4cF
-```
-- Resultado: 
-    - https://sepolia.etherscan.io/address/0xdA9004C3c064BA0Eb211aFFc2ea45516cBa2F4cF#code
-    
-10. Configurar la variable de entorno en .env
-```sh
-  SCHOOL_EVENT_TICKETS_CONTRACT_ADDRESS=0xdA9004C3c064BA0Eb211aFFc2ea45516cBa2F4cF
 ```
 
  
