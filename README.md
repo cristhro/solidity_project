@@ -16,7 +16,16 @@ En nuestro sistema, utilizamos tres tipos de tokens: LegalETH, LegalCase y Legal
 
 Nuestro objetivo es hacer que los servicios legales sean más accesibles y transparentes a través de la tecnología blockchain. Ya sea que seas un abogado buscando una forma eficiente de manejar tus casos, o un cliente buscando una forma transparente y fácil de acceder a los servicios legales, nuestro sistema está diseñado para ti. ¡Esperamos que encuentres nuestro sistema útil y fácil de usar!
 
+## Casos de uso para el Abogado
+1. Acuña nuevos tokens LegalCase y los transfiere a los clientes cuando abre un nuevo caso.
+2. Determina qué tokens LegalPackages son necesarios para un caso y proporciona esta información al cliente.
+3. Recibe pagos en LegalETH cuando los clientes compran tokens LegalPackages.
 
+## Casos de uso para el Cliente
+1. Compra tokens LegalETH para usar dentro del sistema.
+2. Recibe tokens LegalCase que representan la propiedad de sus casos legales.
+3. Compra tokens LegalPackages según sea necesario para su caso.
+   
 ## Configuración del entorno
 #### .env:
 ```sh
