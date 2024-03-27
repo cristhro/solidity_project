@@ -87,149 +87,39 @@ SCHOOL_LEGAL_MANAGER_ADDRESS = 0x464b5345485Dda5D96ca516694d1dBC66d456837
  
 ## Descripción de los nuevos casos de uso y los tests aplicados
   
- ### Solicitar certificado: 
-  El estudiante solicita un certificado al contrato SchoolCertificate. [school-certificate:test1]
+ ### Cliente compra tokens LegalETH: 
+  Cliente compra tokens LegalETH para usar dentro del sistema [test1]
   
   - Requisitos: Tener configurado la variable de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS en .env
     ```sh
       npm run school-certificate:test1 
-      > hardhat run scripts/schoolCertificate/test1_student_request_certificate.ts --network ethereum_sepolia_testnet_as_student
-      > certificate : [
-          'Juan',
-          'Tecnología Blockchain',
-          BigNumber { value: "2023" },
-          false,
-          false,
-          studentName: 'Juan',
-          degree: 'Tecnología Blockchain',
-          year: BigNumber { value: "2023" },
-          allowed: false,
-          granted: false
-        ]
+      > hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client
+    
     ```
   - Resultado: https://sepolia.etherscan.io/tx/0xeec15338376f02c703bf891035f54cd73b607942d5bf64e365e4ede7c992dcd4
 
   
- ### Autorizar certificado: 
- El estudiante autoriza al director para que se realice el cargo de 100 Tokens (SchoolTokens) para obtener su certificado una vez aprobado [school-certificate:test2].
-   - Requisitos: Tener configurado la variable de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS en .env
-   
-     ```sh
-        npm run school-certificate:test2
-        > hardhat run scripts/schoolCertificate/test2_student_allow_certificate.ts --network ethereum_sepolia_testnet_as_student
-        > certificate : [
-            'Juan',
-            'Tecnología Blockchain',
-            BigNumber { value: "2023" },
-            true,
-            false,
-            studentName: 'Juan',
-            degree: 'Tecnología Blockchain',
-            year: BigNumber { value: "2023" },
-            allowed: true, <-- ESTO CAMBIA 
-            granted: false
-          ]
-      ```
-- Resultado: https://sepolia.etherscan.io/tx/0x77be5c9b57e7e91ebe6b744a2bddbec941d8dbdb8860bcc6d5aee909cbecba37
-
-
-### Ver solicitud: 
-  Como estudiante puedo consultar si mi solicitud ha sido aprobada (granted). [school-certificate:test3].
+ ### Abogado Abre un caso 
+  Abogado Acuña nuevos tokens LegalCase y los transfiere al cliente clientes cuando abre un nuevo caso [test2]: 
+  
   - Requisitos: Tener configurado la variable de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS en .env
-     ```sh
-        npm run school-certificate:test3
-        > hardhat run scripts/schoolCertificate/test3_student_view_certificate.ts --network ethereum_sepolia_testnet_as_student
-        > certificate : [
-            'Juan',
-            'Tecnología Blockchain',
-            BigNumber { value: "2023" },
-            true,
-            false,
-            studentName: 'Juan',
-            degree: 'Tecnología Blockchain',
-            year: BigNumber { value: "2023" },
-            allowed: true,
-            granted: false
-          ]
-    ```
-  ### Firmar certificado: 
-  #### El director firmara el certificado, ademas de la transferencia de la cuenta del estudiante a la cuenta del director
-  - Al firmar el certificado se generará un certificado ntf (STUCERT) para el estudiante. (Este certificado nft será unico y no podra ser transferido)
-  - Requisitos: Tener configurado las variables de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS y STUDENT_ADDRESS en .env
+    ```sh
+      npm run test2 
+      > hardhat run scripts/test2_lawyer_open_case.ts --network ethereum_sepolia_testnet_as_lawyer
     
-  ```sh
-      npm run school-certificate:test4
-      > hardhat run scripts/schoolCertificate/test4_director_grant_certificate.ts --network ethereum_sepolia_testnet_as_director
-      certificate : [
-        'Juan',
-        'Tecnología Blockchain',
-        BigNumber { value: "2023" },
-        true,
-        false,
-        studentName: 'Juan',
-        degree: 'Tecnología Blockchain',
-        year: BigNumber { value: "2023" },
-        allowed: true,
-        granted: true <--- ESTO CAMBIA
-      ]
-    ]
-  ```
-   - Resultado: https://sepolia.etherscan.io/tx/0x3d1d9251fae5078b58689586bc387d324382aa1eefdf8e35e35e23e8d94cd57a
-
-
-## Descripción de los nuevos casos de uso del contrato School Event Tickets
-  ### Generar tickets : 
-  #### El director genera 25 tickets para una excursion (SCHOOL_EVENT_TICKET_EXCURSION)
-  - Requisitos: Tener configurado las variables de entorno SCHOOL_EVENT_TICKETS_CONTRACT_ADDRESS, DIRECTOR_ADDRESS, SCHOOL_EVENT_TICKET_EXCURSION en .env
-    
-  ```sh
-      npm run school-event-tickets:test1
-      > hardhat run scripts/schoolEventTickets/test1_school_generate_tickets.ts --network ethereum_sepolia_testnet_as_school
-    ]
-  ```
-   - Resultado: https://sepolia.etherscan.io/tx/0x6ae3e547d26bb63b64ac497d40f3393129aa8ecd1af1affe3eb78621e01e7565
-
-  ### Distribuir tickets: 
-    #### El director distribuira 3 tickets de los 25  generados (SCHOOL_EVENT_TICKET_EXCURSION) a los estudiantes
-    - Requisitos: Tener configurado las variables de entorno SCHOOL_EVENT_TICKETS_CONTRACT_ADDRESS, DIRECTOR_ADDRESS, SCHOOL_EVENT_TICKET_EXCURSION,  STUDENT1_ADDRESS, STUDENT2_ADDRESS, STUDENT3_ADDRESS en .env
-      
-    ```sh
-        npm run school-event-tickets:test2
-        > hardhat run scripts/schoolEventTickets/test2_school_distribute_tickets.ts --network ethereum_sepolia_testnet_as_school
-        Saldo de entradas de 0xB1b987b0aCc4139e1565256A89E1d3ea8c6Da1bf: 1
-        Saldo de entradas de 0x34BF29Fc721353E90C5915fc0eBB317f37Ee13E0: 1
-        Saldo de entradas de 0xEDee67926Ff5cB756D50C5A6bECAe8945279003c: 1
-      ]
     ```
-    - Resultado: https://sepolia.etherscan.io/tx/0x2ab1d5c017630155f2ed939b4f0d72d7c93758d3224c573abf5b0b8c7efa108d
-  
-  ### Como estudiante consultar mis tickets: 
-    - Requisitos: Tener configurado las variables de entorno SCHOOL_EVENT_TICKETS_CONTRACT_ADDRESS, DIRECTOR_ADDRESS, SCHOOL_EVENT_TICKET_EXCURSION,  STUDENT1_ADDRESS en .env
-      
-    ```sh
-        npm run school-event-tickets:test3
-        > hardhat run scripts/schoolEventTickets/test2_school_distribute_tickets.ts --network ethereum_sepolia_testnet_as_school
-        Saldo de entradas de 0xB1b987b0aCc4139e1565256A89E1d3ea8c6Da1bf: 1
-        Saldo de entradas de 0x34BF29Fc721353E90C5915fc0eBB317f37Ee13E0: 1
-        Saldo de entradas de 0xEDee67926Ff5cB756D50C5A6bECAe8945279003c: 1
-      ]
-    ```
-    - Resultado: https://sepolia.etherscan.io/tx/0x1164bf43fde0388c10bfa2dceaa74dcc9b7ede444f5f837e21dbfe4de62b1c07
-  
-  ### Transferir ticket: 
-   #### En esta ocasión transferiremos tickets del estudiante 1 al 2 
-    - Requisitos: Tener configurado las variables de entorno SCHOOL_EVENT_TICKETS_CONTRACT_ADDRESS, SCHOOL_EVENT_TICKET_EXCURSION,  STUDENT1_ADDRESS STUDENT2_ADDRESS en .env
-      
-    ```sh
-        npm run school-event-tickets:test4
-        > hardhat run scripts/schoolEventTickets/test4_school_transfer_ticket_student1_to_student2.ts --network ethereum_sepolia_testnet_as_school
-        Student1 0xB1b987b0aCc4139e1565256A89E1d3ea8c6Da1bf: 0
-        Student2 0x34BF29Fc721353E90C5915fc0eBB317f37Ee13E0: 2
-      ]
-    ```
-    - Resultado: https://sepolia.etherscan.io/tx/0xc75ef917bffaf749dbe92da6f0b5fac8f993312be58e988b0db8e3117af6a48b
+  - Resultado: https://sepolia.etherscan.io/tx/0xeec15338376f02c703bf891035f54cd73b607942d5bf64e365e4ede7c992dcd4
 
 
-
-### El estudiante adquiere tickets de eventos escolares: 
+ ### Cliente Comprar packages 
+  Compra tokens LegalPackages según sea necesario para su caso. [test3]: 
    
+  - Requisitos: Tener configurado la variable de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS en .env
+    ```sh
+      npm run test3 
+      > hardhat run scripts/test3_client_buy_packages.ts --network ethereum_sepolia_testnet_as_client
+    
+    ```
+  - Resultado: https://sepolia.etherscan.io/tx/0xeec15338376f02c703bf891035f54cd73b607942d5bf64e365e4ede7c992dcd4
+
+ 
