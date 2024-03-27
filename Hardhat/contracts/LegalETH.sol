@@ -8,9 +8,11 @@ contract LegalETH is ERC20 {
 
   string public constant NAME = "LegalETH";
   string public constant SYMBOL = "LETH";
+  address public managerAddress;   // Dirección de la manager
+
 
   constructor() ERC20(NAME, SYMBOL) {
-    exchangeAddress = msg.sender;
+    managerAddress = msg.sender;
   }
 
   // Función para transferir tokens entre clientes
@@ -31,7 +33,7 @@ contract LegalETH is ERC20 {
   }
 
   // Función para consultar el saldo de un cliente
-  function balanceOf(address account) public view override returns (uint256) {
+  function balanceOf(address account) public onlyManager view override returns (uint256) {
     return super.balanceOf(account);
   }
 
@@ -40,17 +42,16 @@ contract LegalETH is ERC20 {
     return super.balanceOf(msg.sender);
   }
 
-  // Función personalizada para que la exchange cree y envíe tokens a los clientes
-  function mintTokens(address client, uint256 amount) public onlyExchange {
+  // Función personalizada para que la manager cree y envíe tokens a los clientes
+  function mintTokens(address client, uint256 amount) public onlyManager {
     _safeMint(client, amount);
   }
 
-  // Modifier para restringir la función a la exchange
-  modifier onlyExchange() {
-    require(msg.sender == exchangeAddress, "Only the exchange can mint tokens");
+  // Modifier para restringir la función a la manager
+  modifier onlyManager() {
+    require(msg.sender == managerAddress, "Only the manager can mint tokens");
     _;
   }
 
-  // Variable para almacenar la dirección de la exchange
-  address public exchangeAddress;
+
 }

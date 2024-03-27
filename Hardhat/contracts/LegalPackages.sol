@@ -5,9 +5,9 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract LegalAdvicePackages is ERC1155, Ownable {
+contract LegalPackages is ERC1155, Ownable {
     // Dirección del contrato de legalETH, el token ERC-20
-    IERC20 public legalETH;
+    LegalETH public legalEth; // TODO: revisar 
 
     uint256 public constant PACKAGE_BASIC = 1;
     uint256 public constant PACKAGE_STANDARD = 2;
@@ -21,8 +21,8 @@ contract LegalAdvicePackages is ERC1155, Ownable {
 
     mapping(uint256 => PackageInfo) public packageDetails;
 
-    constructor(address _legalETHAddress) ERC1155("https://example.com/api/item/{id}.json") {
-        legalETH = IERC20(_legalETHAddress);
+    constructor(address _legalETH) ERC1155("https://example.com/api/item/{id}.json") {
+        legalETH = LegalETH(_legalETH);
         
         // Definir los paquetes con su precio en legalETH
         packageDetails[PACKAGE_BASIC] = PackageInfo("Basic Legal Advice", 5, 50 * (10 ** 18)); // 50 legalETH, ajustar según la denominación del token
