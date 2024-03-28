@@ -11,10 +11,14 @@ async function _deployContract(contractName: string, ...args: Array<any>) {
 
 async function main() {
 // We get the contract to deploy
-  const legalETH = await _deployContract("LegalETH")
-  const legalCase = await _deployContract("LegalCase")
-  const legalPackages = await _deployContract("LegalPackages", legalETH.address)
-  const legalManager = await _deployContract("LegalManager", legalETH.address, legalCase.address)
+  const legalETHContract = await _deployContract("LegalETH")
+  const legalCaseContract = await _deployContract("LegalCase")
+  const legalPackagesContract = await _deployContract("LegalPackages", legalETHContract.address)
+  const legalManagerContract = await _deployContract("LegalManager", legalETHContract.address, legalCaseContract.address)
+
+  const tx = await legalETHContract.setOwner(legalManagerContract.address)
+  await tx.wait()
+  console.log('🚀 ~ main ~ tx:', tx)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

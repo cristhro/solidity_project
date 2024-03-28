@@ -6,12 +6,12 @@
     "clean": "hardhat clean",
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network ethereum_sepolia_testnet_as_manager",
+    "verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
+    "test1": "hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client",
+    "test2": "hardhat run scripts/test2_client_my_balance.ts --network ethereum_sepolia_testnet_as_client",
     "legal-eth:verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
     "legal-manager:verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
-
-    
     "legal-manager-legal-eth:test1": "hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client"
-
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.8",

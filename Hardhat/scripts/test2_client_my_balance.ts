@@ -6,9 +6,9 @@ const {  LEGAL_CASE_ADDRESS, LEGAL_MANAGER_CONTRACT_ADDRESS, LEGAL_ETH_CONTRACT_
 
 async function main() {
     const LegalETHContract = await ethers.getContractAt('LegalETH', LEGAL_ETH_CONTRACT_ADDRESS);
-    const LegalManagerContract = await ethers.getContractAt('LegalManager', LEGAL_MANAGER_CONTRACT_ADDRESS);
-    const tx = await LegalManagerContract.buyLegalETH(100);
-    await tx.wait();
+
+   const myBalance =  await LegalETHContract.myBalance()
+    console.log("myBalance:", myBalance);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
