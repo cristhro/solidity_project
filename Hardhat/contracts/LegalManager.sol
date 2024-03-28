@@ -16,9 +16,14 @@ contract LegalManager is ReentrancyGuard  {
     }
 
     // Los clientes compren LegalETH
-    function buyLegalETH() public payable nonReentrant {
-        require(msg.value > 0, 'Debe enviar algun ether para comprar LegalETH');
-        legalEth.mintTokens(msg.sender, msg.value);
+    // function buyLegalETH() public payable nonReentrant {
+    //     require(msg.value > 0, 'Debe enviar algun ether para comprar LegalETH');
+    //     legalEth.mintTokens(msg.sender, msg.value);
+    // }
+
+    function buyLegalETH(uint256 amount) public payable nonReentrant {
+        require(amount > 0, 'Debe enviar algun ether para comprar LegalETH');
+        legalEth.mintTokens(msg.sender, amount); 
     }
 
     // Los abogados abran un caso

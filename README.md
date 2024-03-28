@@ -90,9 +90,9 @@ SCHOOL_LEGAL_MANAGER_ADDRESS = 0x464b5345485Dda5D96ca516694d1dBC66d456837
  ### Cliente compra tokens LegalETH: 
   Cliente compra tokens LegalETH para usar dentro del sistema [test1]
   
-  - Requisitos: Tener configurado la variable de entorno SCHOOL_CERTIFICATE_CONTRACT_ADDRESS en .env
+  - Requisitos: Tener configurado la variable de entorno SCHOOL_LEGAL_ETH_ADDRESS, SCHOOL_LEGAL_CASE_ADDRESS en .env
     ```sh
-      npm run school-certificate:test1 
+      npm run legal-manager-legal-eth:test1 
       > hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client
     
     ```
