@@ -24,6 +24,11 @@ contract LegalManager   {
         legalCase = LegalCase(_legalCase);
         owner = msg.sender;
     }
+    
+    modifier onlyLawyer() {
+        require(lawyers[msg.sender].active, "Only active lawyers can open a case");
+        _;
+    }
 
     // Lawyer Management
     function addLawyer(address lawyerAddress, string memory name, string memory registrationNumber) public {
@@ -46,8 +51,8 @@ contract LegalManager   {
     }
 
     // Los abogados abren un caso
-    function openLegalCase(address client, string memory caseId) public {
-        // TODO: use client
+
+    function openLegalCase(address client, string memory caseId) public onlyLawyer {
         legalCase.mintLegalCase(caseId); // TODO: REVIEW
     }
 
