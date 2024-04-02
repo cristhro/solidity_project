@@ -9,7 +9,11 @@
     "verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
     "test1": "hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client",
     "test2": "hardhat run scripts/test2_client_my_balance.ts --network ethereum_sepolia_testnet_as_client",
-    "test3": "hardhat run scripts/test3_lawyer_open_case.ts --network ethereum_sepolia_testnet_as_lawyer",
+    "test3": "hardhat run scripts/test3_manager_add_lawyer.ts --network ethereum_sepolia_testnet_as_manager",
+    "test4": "hardhat run scripts/test4_manager_read_info_lawyer.ts --network ethereum_sepolia_testnet_as_manager",
+    "test5": "hardhat run scripts/test5_lawyer_open_case.ts --network ethereum_sepolia_testnet_as_manager",
+    "test6": "hardhat run scripts/test6_client_buy_packages.ts --network ethereum_sepolia_testnet_as_manager",
+    "test7": "hardhat run scripts/test7_lawyer_close_case.ts --network ethereum_sepolia_testnet_as_manager",
     "legal-eth:verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
     "legal-manager:verify": "hardhat verify  --network ethereum_sepolia_testnet_as_manager",
     "legal-manager-legal-eth:test1": "hardhat run scripts/test1_client_buy_tokens.ts --network ethereum_sepolia_testnet_as_client"
